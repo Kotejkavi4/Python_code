@@ -7,6 +7,8 @@ from object_list import ObjectList
 from game_exit import GameExit
 from game_door import GameDoor
 from game_key import GameKey
+from game_diamond import GameDiamond
+#from game_scoreboard import GameScoreboard
 
 class GameWorld:
     def __init__(self):
@@ -15,6 +17,7 @@ class GameWorld:
         self.class_object_list = ObjectList()
         self.class_object_list.object_list = []
         self.map_data = []
+        self.map_path = "res/map1.csv"
 
     def setup(self):
         rectangle_width = 30
@@ -24,7 +27,7 @@ class GameWorld:
         object_class_game_bkg = GameBackground(pygame_display_window)
         self.class_object_list.object_list.append(object_class_game_bkg)
 
-        with open("res/map1.csv", newline='') as file:
+        with open(self.map_path, newline='') as file:
             reader = csv.reader(file)
             for row in reader:
                 self.map_data.append([int(tile_id) for tile_id in row])
@@ -50,10 +53,16 @@ class GameWorld:
                 elif tile_value == 2:
                     object_class_game_door = GameDoor(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_door_type_1.png", pygame_display_window, 1)
                     self.class_object_list.object_list.append(object_class_game_door)
-                elif tile_value == 4:
+                elif tile_value == 10:
                     object_class_game_rect = GameRect(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_rectangle.png", pygame_display_window, self.window_width, self.window_height)
                     self.class_object_list.object_list.append(object_class_game_rect)
-                    
+                elif tile_value == 11:
+                    object_class_game_diamond = GameDiamond(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_diamond.png", pygame_display_window)
+                    self.class_object_list.object_list.append(object_class_game_diamond)
+
+        #object_class_game_scoreboard = GameScoreboard(self.window_width - (rectangle_width * 2), 0, pygame_display_window)
+        #self.class_object_list.object_list.append(object_class_game_scoreboard)
+
     def draw(self):
         for x in self.class_object_list.object_list:
             x.draw()
