@@ -8,7 +8,7 @@ from game_exit import GameExit
 from game_door import GameDoor
 from game_key import GameKey
 from game_diamond import GameDiamond
-#from game_scoreboard import GameScoreboard
+from game_scoreboard import GameScoreboard
 
 class GameWorld:
     def __init__(self):
@@ -34,7 +34,7 @@ class GameWorld:
 
         for y, row in enumerate(self.map_data):
             for x, tile_value in enumerate(row):
-                print(x, y, tile_value)
+                #print(x, y, tile_value)
                 if tile_value == 0:
                     object_class_game_rock = GameRock(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_rock.png", pygame_display_window)
                     self.class_object_list.object_list.append(object_class_game_rock)
@@ -60,8 +60,8 @@ class GameWorld:
                     object_class_game_diamond = GameDiamond(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_diamond.png", pygame_display_window)
                     self.class_object_list.object_list.append(object_class_game_diamond)
 
-        #object_class_game_scoreboard = GameScoreboard(self.window_width - (rectangle_width * 2), 0, pygame_display_window)
-        #self.class_object_list.object_list.append(object_class_game_scoreboard)
+        object_class_game_scoreboard = GameScoreboard(self.window_width - (rectangle_width * 2), 0, rectangle_width * 2, rectangle_height, pygame_display_window)
+        self.class_object_list.object_list.append(object_class_game_scoreboard)
 
     def draw(self):
         for x in self.class_object_list.object_list:
