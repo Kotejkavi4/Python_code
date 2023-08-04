@@ -2,7 +2,7 @@ import pygame
 
 class GameRock:
     def __init__(self, x, y, width, height, image, surface):
-        self.type = 1
+        self.type = "rock"
         self.left_edge_x = x
         self.top_edge_y = y
         self.width = width

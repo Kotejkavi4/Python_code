@@ -2,7 +2,7 @@ import pygame
 
 class GameRect:
     def __init__(self, x, y, width, height, image, surface, win_widths, win_heights):
-        self.type = 2
+        self.type = "rectangle"
         self.score = 0
         self.left_edge_x = x
         self.top_edge_y = y
@@ -48,22 +48,22 @@ class GameRect:
         collision_y = False
         for i in object_list.object_list:
 
-            if i.type == 5 and self.rect.colliderect(i.key):
+            if i.type == "key" and self.rect.colliderect(i.key):
                 object_list.object_list.pop(object_list.object_list.index(i))
                 if i.variety == 1:
                     print("Door 1 open now")
                     for ii in object_list.object_list:
-                        if ii.type == 4 and ii.variety == 1:
+                        if ii.type == "door" and ii.variety == 1:
                             ii.is_open = True
 
 
                 elif i.variety == 2:
                     print("Door 2 open now")
                     for ii in object_list.object_list:
-                        if ii.type == 4 and ii.variety == 2:
+                        if ii.type == "door" and ii.variety == 2:
                             ii.is_open = True
 
-            if i.type == 4:
+            if i.type == "door":
                 if not i.is_open:
                     self.rect = pygame.Rect(change_x, self.top_edge_y, self.width, self.height)
                     if self.rect.colliderect(i.door):
@@ -72,7 +72,7 @@ class GameRect:
                     if self.rect.colliderect(i.door):
                         collision_y = True
 
-            if i.type == 1:
+            if i.type == "rock":
                 self.rect = pygame.Rect(change_x, self.top_edge_y, self.width, self.height)
                 if self.rect.colliderect(i.rock):
                     collision_x = True
@@ -80,11 +80,11 @@ class GameRect:
                 if self.rect.colliderect(i.rock):
                     collision_y = True
 
-            if i.type == 3:
+            if i.type == "exit":
                 if self.rect.colliderect(i.ext):
                     print("You WIN!!!")
 
-            if i.type == 6:
+            if i.type == "diamond":
                 if self.rect.colliderect(i.diamond):
                     object_list.object_list.pop(object_list.object_list.index(i))
                     self.score = self.score + 1

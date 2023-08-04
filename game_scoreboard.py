@@ -3,7 +3,7 @@ pygame.font.init()
 
 class GameScoreboard:
     def __init__(self, x, y, width, height, surface):
-        self.type = 7
+        self.type = "scoreboard"
         self.surface = surface
         self.score = 0
         self.left_edge_x = x

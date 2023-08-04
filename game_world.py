@@ -9,6 +9,7 @@ from game_door import GameDoor
 from game_key import GameKey
 from game_diamond import GameDiamond
 from game_scoreboard import GameScoreboard
+from game_soil import GameSoil
 
 class GameWorld:
     def __init__(self):
@@ -59,6 +60,9 @@ class GameWorld:
                 elif tile_value == 11:
                     object_class_game_diamond = GameDiamond(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_diamond.png", pygame_display_window)
                     self.class_object_list.object_list.append(object_class_game_diamond)
+                elif tile_value == 4:
+                    object_class_game_soil = GameSoil(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_soil.png", pygame_display_window)
+                    self.class_object_list.object_list.append(object_class_game_soil)
 
         object_class_game_scoreboard = GameScoreboard(self.window_width - (rectangle_width * 5), 0, rectangle_width * 2, rectangle_height, pygame_display_window)
         self.class_object_list.object_list.append(object_class_game_scoreboard)

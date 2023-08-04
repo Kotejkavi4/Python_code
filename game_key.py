@@ -2,7 +2,7 @@ import pygame
 
 class GameKey:
     def __init__(self, x, y, width, height, image, surface, variety):
-        self.type = 5
+        self.type = "key"
         self.left_edge_x = x
         self.top_edge_y = y
         self.width = width

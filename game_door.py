@@ -2,7 +2,7 @@ import pygame
 
 class GameDoor:
     def __init__(self, x, y, width, height, image, surface, variety):
-        self.type = 4
+        self.type = "door"
         self.left_edge_x = x
         self.top_edge_y = y
         self.width = width

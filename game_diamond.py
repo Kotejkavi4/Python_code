@@ -2,7 +2,7 @@ import pygame
 
 class GameDiamond:
     def __init__(self, x, y, width, height, image, surface):
-        self.type = 6
+        self.type = "diamond"
         self.left_edge_x = x
         self.top_edge_y = y
         self.width = width
