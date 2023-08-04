@@ -60,7 +60,7 @@ class GameWorld:
                     object_class_game_diamond = GameDiamond(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_diamond.png", pygame_display_window)
                     self.class_object_list.object_list.append(object_class_game_diamond)
 
-        object_class_game_scoreboard = GameScoreboard(self.window_width - (rectangle_width * 2), 0, rectangle_width * 2, rectangle_height, pygame_display_window)
+        object_class_game_scoreboard = GameScoreboard(self.window_width - (rectangle_width * 5), 0, rectangle_width * 2, rectangle_height, pygame_display_window)
         self.class_object_list.object_list.append(object_class_game_scoreboard)
 
     def draw(self):

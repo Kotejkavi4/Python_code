@@ -22,4 +22,4 @@ class GameScoreboard:
 
     def draw(self):
         score_text = self.font.render("Score: " + str(self.score), True, (255, 255, 255))
-        self.surface.blit(score_text, (10, 10))
+        self.surface.blit(score_text, self.scoreboard)
