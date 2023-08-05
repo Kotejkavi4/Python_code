@@ -15,7 +15,8 @@ class GameRect:
         self.win_heights = win_heights
         self.count = 0
         self.rect = pygame.Rect(self.left_edge_x, self.top_edge_y, self.width, self.height)
-        self.move_freeze = 200
+        self.move_freeze = 150
+        self.move_freeze_timer = self.move_freeze
 
 
     def draw(self):
@@ -23,7 +24,7 @@ class GameRect:
         self.surface.blit(self.image, self.rect)
 
     def update(self, user_input, object_list, get_time):
-        if self.move_freeze <= 0:
+        if self.move_freeze_timer <= 0:
             is_move = False
             change_y = self.top_edge_y
             change_x = self.left_edge_x
@@ -111,7 +112,7 @@ class GameRect:
                 self.top_edge_y = change_y
 
             if is_move:
-                self.move_freeze = 300
+                self.move_freeze_timer = self.move_freeze
 
         else:
-            self.move_freeze -= get_time
+            self.move_freeze_timer -= get_time
