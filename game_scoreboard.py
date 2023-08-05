@@ -15,7 +15,7 @@ class GameScoreboard:
 
     def update(self, user_input, object_list):
         for i in object_list.object_list:
-            if i.type == 2:
+            if i.type == "rectangle":
                 self.score = i.score
 
 

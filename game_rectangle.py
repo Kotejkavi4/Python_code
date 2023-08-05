@@ -90,6 +90,10 @@ class GameRect:
                     self.score = self.score + 1
                     #print(self.score)
 
+            if i.type == "soil":
+                if self.rect.colliderect(i.soil):
+                    object_list.object_list.pop(object_list.object_list.index(i))
+
         if not collision_x:
             if not collision_y:
                 self.left_edge_x = change_x
