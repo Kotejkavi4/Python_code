@@ -18,5 +18,5 @@ class GameKey:
             #self.surface.blit(self.image, self.key)
         self.surface.blit(self.image, self.key)
 
-    def update(self, user_input, object_list):
+    def update(self, user_input, object_list, get_time):
         pass

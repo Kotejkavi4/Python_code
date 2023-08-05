@@ -10,5 +10,5 @@ class GameBackground:
     def draw(self):
         self.surface.fill(self.color)
 
-    def update(self, user_input, object_list):
+    def update(self, user_input, object_list, get_time):
         pass

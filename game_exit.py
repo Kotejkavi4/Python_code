@@ -14,5 +14,5 @@ class GameExit:
     def draw(self):
         self.surface.blit(self.image, self.ext)
 
-    def update(self, user_input, object_list):
+    def update(self, user_input, object_list, get_time):
         pass

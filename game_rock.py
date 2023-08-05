@@ -14,5 +14,5 @@ class GameRock:
     def draw(self):
         self.surface.blit(self.image, self.rock)
 
-    def update(self, user_input, object_list):
+    def update(self, user_input, object_list, get_time):
         pass

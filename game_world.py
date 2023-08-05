@@ -38,31 +38,31 @@ class GameWorld:
                 #print(x, y, tile_value)
                 if tile_value == 0:
                     object_class_game_rock = GameRock(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_rock.png", pygame_display_window)
-                    self.class_object_list.object_list.append(object_class_game_rock)
+                    self.class_object_list.object_list.insert(1, object_class_game_rock)
                 elif tile_value == 13:
                     object_class_game_key = GameKey(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_key_type_2.png", pygame_display_window, 2)
-                    self.class_object_list.object_list.append(object_class_game_key)
+                    self.class_object_list.object_list.insert(1, object_class_game_key)
                 elif tile_value == 3:
                     object_class_game_key = GameKey(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_key_type_1.png", pygame_display_window, 1)
-                    self.class_object_list.object_list.append(object_class_game_key)
+                    self.class_object_list.object_list.insert(1, object_class_game_key)
                 elif tile_value == 1:
                     object_class_game_exit = GameExit(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_exit.png", pygame_display_window)
-                    self.class_object_list.object_list.append(object_class_game_exit)
+                    self.class_object_list.object_list.insert(1, object_class_game_exit)
                 elif tile_value == 12:
                     object_class_game_door = GameDoor(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_door_type_2.png", pygame_display_window, 2)
-                    self.class_object_list.object_list.append(object_class_game_door)
+                    self.class_object_list.object_list.insert(1, object_class_game_door)
                 elif tile_value == 2:
                     object_class_game_door = GameDoor(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_door_type_1.png", pygame_display_window, 1)
-                    self.class_object_list.object_list.append(object_class_game_door)
+                    self.class_object_list.object_list.insert(1, object_class_game_door)
                 elif tile_value == 10:
                     object_class_game_rect = GameRect(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_rectangle.png", pygame_display_window, self.window_width, self.window_height)
                     self.class_object_list.object_list.append(object_class_game_rect)
                 elif tile_value == 11:
                     object_class_game_diamond = GameDiamond(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_diamond.png", pygame_display_window)
-                    self.class_object_list.object_list.append(object_class_game_diamond)
+                    self.class_object_list.object_list.insert(1, object_class_game_diamond)
                 elif tile_value == 4:
                     object_class_game_soil = GameSoil(x * rectangle_height, y * rectangle_width, rectangle_width, rectangle_height, "res/game_soil.png", pygame_display_window)
-                    self.class_object_list.object_list.append(object_class_game_soil)
+                    self.class_object_list.object_list.insert(1, object_class_game_soil)
 
         object_class_game_scoreboard = GameScoreboard(self.window_width - (rectangle_width * 5), 0, rectangle_width * 2, rectangle_height, pygame_display_window)
         self.class_object_list.object_list.append(object_class_game_scoreboard)
@@ -71,6 +71,6 @@ class GameWorld:
         for x in self.class_object_list.object_list:
             x.draw()
 
-    def update(self, user_input):
+    def update(self, user_input, get_time):
         for x in self.class_object_list.object_list:
-            x.update(user_input, self.class_object_list)
+            x.update(user_input, self.class_object_list, get_time)

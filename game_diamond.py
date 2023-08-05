@@ -14,5 +14,5 @@ class GameDiamond:
     def draw(self):
         self.surface.blit(self.image, self.diamond)
 
-    def update(self, user_input, object_list):
+    def update(self, user_input, object_list, get_time):
         pass
