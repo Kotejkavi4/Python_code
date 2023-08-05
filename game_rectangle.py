@@ -14,14 +14,14 @@ class GameRect:
         self.win_widths = win_widths
         self.win_heights = win_heights
         self.count = 0
-        self.rect = pygame.Rect(self.left_edge_x, self.top_edge_y, self.width, self.height)
+        self.bounding_box = pygame.Rect(self.left_edge_x, self.top_edge_y, self.width, self.height)
         self.move_freeze = 150
         self.move_freeze_timer = self.move_freeze
 
 
     def draw(self):
-        self.rect = pygame.Rect(self.left_edge_x, self.top_edge_y, self.width, self.height)
-        self.surface.blit(self.image, self.rect)
+        self.bounding_box = pygame.Rect(self.left_edge_x, self.top_edge_y, self.width, self.height)
+        self.surface.blit(self.image, self.bounding_box)
 
     def update(self, user_input, object_list, get_time):
         if self.move_freeze_timer <= 0:
@@ -49,14 +49,11 @@ class GameRect:
                     change_x = self.left_edge_x + self.step
                 is_move = True
 
-            #self.rect = pygame.Rect(change_x, change_y, self.width, self.height)
-            #self.rect = pygame.Rect(self.left_edge_x, self.top_edge_y, self.width, self.height)
-
             collision_x = False
             collision_y = False
             for i in object_list.object_list:
 
-                if i.type == "key" and self.rect.colliderect(i.key):
+                if i.type == "key" and self.bounding_box.colliderect(i.bounding_box):
                     object_list.object_list.pop(object_list.object_list.index(i))
                     if i.variety == 1:
                         print("Door 1 open now")
@@ -73,33 +70,33 @@ class GameRect:
 
                 if i.type == "door":
                     if not i.is_open:
-                        self.rect = pygame.Rect(change_x, self.top_edge_y, self.width, self.height)
-                        if self.rect.colliderect(i.door):
+                        self.bounding_box = pygame.Rect(change_x, self.top_edge_y, self.width, self.height)
+                        if self.bounding_box.colliderect(i.bounding_box):
                             collision_x = True
-                        self.rect = pygame.Rect(self.left_edge_x, change_y, self.width, self.height)
-                        if self.rect.colliderect(i.door):
+                        self.bounding_box = pygame.Rect(self.left_edge_x, change_y, self.width, self.height)
+                        if self.bounding_box.colliderect(i.bounding_box):
                             collision_y = True
 
                 if i.type == "rock":
-                    self.rect = pygame.Rect(change_x, self.top_edge_y, self.width, self.height)
-                    if self.rect.colliderect(i.rock):
+                    self.bounding_box = pygame.Rect(change_x, self.top_edge_y, self.width, self.height)
+                    if self.bounding_box.colliderect(i.bounding_box):
                         collision_x = True
-                    self.rect = pygame.Rect(self.left_edge_x, change_y, self.width, self.height)
-                    if self.rect.colliderect(i.rock):
+                    self.bounding_box = pygame.Rect(self.left_edge_x, change_y, self.width, self.height)
+                    if self.bounding_box.colliderect(i.bounding_box):
                         collision_y = True
 
                 if i.type == "exit":
-                    if self.rect.colliderect(i.ext):
+                    if self.bounding_box.colliderect(i.bounding_box):
                         print("You WIN!!!")
 
                 if i.type == "diamond":
-                    if self.rect.colliderect(i.diamond):
+                    if self.bounding_box.colliderect(i.bounding_box):
                         object_list.object_list.pop(object_list.object_list.index(i))
                         self.score = self.score + 1
                         #print(self.score)
 
                 if i.type == "soil":
-                    if self.rect.colliderect(i.soil):
+                    if self.bounding_box.colliderect(i.bounding_box):
                         object_list.object_list.pop(object_list.object_list.index(i))
 
             if not collision_x:

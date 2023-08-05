@@ -11,11 +11,11 @@ class GameScoreboard:
         self.width = width
         self.height = height
         self.font = pygame.font.Font(None, 36)
-        self.scoreboard = pygame.Rect(self.left_edge_x, self.top_edge_y, self.width, self.height)
+        self.bounding_box = pygame.Rect(self.left_edge_x, self.top_edge_y, self.width, self.height)
 
     def draw(self):
         score_text = self.font.render("Score: " + str(self.score), True, (255, 255, 255))
-        self.surface.blit(score_text, self.scoreboard)
+        self.surface.blit(score_text, self.bounding_box)
 
     def update(self, user_input, object_list, get_time):
         for i in object_list.object_list:
